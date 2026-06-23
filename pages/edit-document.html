@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Dokumen - DMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="app-container">
+        <div id="sidebar-container"></div>
+
+        <div id="content" class="main-content">
+            <div id="navbar-container"></div>
+
+            <div class="content-body">
+                <div class="mb-3">
+                    <button id="btn-back" class="btn btn-sm btn-outline-secondary fw-semibold">
+                        <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar
+                    </button>
+                </div>
+
+                <div class="card shadow-sm border-0 rounded-3 mx-auto" style="max-width: 800px;">
+                    <div class="card-header bg-white border-bottom py-3 px-4">
+                        <h5 class="fw-bold text-dark m-0"><i class="bi bi-pencil-square me-2 text-warning"></i>Form Edit Metadata Dokumen</h5>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <div id="alert-container"></div>
+
+                        <div id="form-loading" class="text-center py-5">
+                            <div class="spinner-border text-warning" role="status"></div>
+                            <p class="text-muted mt-2 small">Mengambil berkas asli dari database...</p>
+                        </div>
+
+                        <form id="edit-document-form" class="d-none">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="category" class="form-label small fw-semibold text-secondary">Kategori Dokumen <span class="text-danger">*</span></label>
+                                    <select id="category" class="form-select form-select-sm" required>
+                                        <option value="UMUM">Surat Masuk Umum (UMUM)</option>
+                                        <option value="UNDANGAN">Surat Masuk Undangan (UNDANGAN)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="month" class="form-label small fw-semibold text-secondary">Bulan Berjalan <span class="text-danger">*</span></label>
+                                    <select id="month" class="form-select form-select-sm" required>
+                                        <option value="Januari">Januari</option>
+                                        <option value="Februari">Februari</option>
+                                        <option value="Maret">Maret</option>
+                                        <option value="April">April</option>
+                                        <option value="Mei">Mei</option>
+                                        <option value="Juni">Juni</option>
+                                        <option value="Juli">Juli</option>
+                                        <option value="Agustus">Agustus</option>
+                                        <option value="September">September</option>
+                                        <option value="Oktober">Oktober</option>
+                                        <option value="November">November</option>
+                                        <option value="Desember">Desember</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="source" class="form-label small fw-semibold text-secondary">Asal Surat <span class="text-danger">*</span></label>
+                                    <input type="text" id="source" class="form-control form-control-sm" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="letter_number" class="form-label small fw-semibold text-secondary">Nomor Surat <span class="text-danger">*</span></label>
+                                    <input type="text" id="letter_number" class="form-control form-control-sm" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="letter_date" class="form-label small fw-semibold text-secondary">Tanggal Surat <span class="text-danger">*</span></label>
+                                    <input type="date" id="letter_date" class="form-control form-control-sm" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="letter_type" class="form-label small fw-semibold text-secondary">Jenis Surat <span class="text-danger">*</span></label>
+                                    <input type="text" id="letter_type" class="form-control form-control-sm" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="letter_nature" class="form-label small fw-semibold text-secondary">Sifat Surat <span class="text-danger">*</span></label>
+                                    <select id="letter_nature" class="form-select form-select-sm" required>
+                                        <option value="Biasa">Biasa</option>
+                                        <option value="Penting">Penting</option>
+                                        <option value="Rahasia">Rahasia</option>
+                                        <option value="Segera">Segera</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="gdrive_link" class="form-label small fw-semibold text-secondary">Link Google Drive <span class="text-danger">*</span></label>
+                                    <input type="url" id="gdrive_link" class="form-control form-control-sm" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="description" class="form-label small fw-semibold text-secondary">Deskripsi / Perihal</label>
+                                    <textarea id="description" class="form-control form-control-sm" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                                <button type="button" id="btn-cancel" class="btn btn-light btn-sm fw-semibold px-3">Batal</button>
+                                <button type="submit" id="btn-submit" class="btn btn-warning btn-sm fw-semibold px-4 text-dark">
+                                    <span id="btn-text">Perbarui Dokumen</span>
+                                    <span id="btn-spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div> </div>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/js/edit-document.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Dokumen - DMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <style>
+        /* Mengatur ketinggian area preview agar penuh & responsif */
+        .preview-container {
+            position: relative;
+            height: calc(100vh - 160px);
+            min-height: 500px;
+            background: #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="wrapper">
+        <div id="sidebar-container"></div>
+
+        <div id="content" class="d-flex flex-column p-0">
+            <div id="navbar-container"></div>
+
+            <div class="container-fluid p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <button id="btn-back" class="btn btn-sm btn-outline-secondary fw-semibold">
+                        <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar
+                    </button>
+                    <div class="btn-group btn-group-sm">
+                        <a href="#" id="link-edit-shortcut" class="btn btn-warning text-dark fw-semibold"><i class="bi bi-pencil"></i> Edit Metadata</a>
+                        <a href="#" id="link-external-gdrive" target="_blank" class="btn btn-primary fw-semibold"><i class="bi bi-box-arrow-up-right"></i> Buka di Drive</a>
+                    </div>
+                </div>
+
+                <div id="global-loading" class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p class="text-muted mt-2 small">Membuka lembar arsip berkas...</p>
+                </div>
+
+                <div id="view-main-layout" class="row g-4 d-none">
+                    
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm border-0 rounded-3 mb-3">
+                            <div class="card-header bg-white border-bottom py-3">
+                                <h6 class="fw-bold m-0 text-primary"><i class="bi bi-info-circle me-2"></i>Informasi Metadata</h6>
+                            </div>
+                            <div class="card-body p-3">
+                                <table class="table table-sm table-borderless mb-0 small">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted py-1" style="width: 35%;">Kategori</td>
+                                            <td class="fw-bold py-1" id="lbl-category">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Bulan</td>
+                                            <td class="fw-semibold py-1" id="lbl-month">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Create Date</td>
+                                            <td class="text-secondary py-1" id="lbl-created-date">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Asal Surat</td>
+                                            <td class="fw-bold text-dark py-1" id="lbl-source">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Nomor Surat</td>
+                                            <td class="py-1"><code class="text-dark bg-light px-1 rounded" id="lbl-letter-number">-</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Tanggal Surat</td>
+                                            <td class="py-1" id="lbl-letter-date">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Jenis Surat</td>
+                                            <td class="py-1"><span class="badge bg-secondary opacity-75" id="lbl-letter-type">-</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Sifat Surat</td>
+                                            <td class="py-1"><span class="badge bg-light text-dark border" id="lbl-letter-nature">-</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card shadow-sm border-0 rounded-3">
+                            <div class="card-header bg-white border-bottom py-2">
+                                <small class="fw-bold text-secondary text-uppercase">Perihal / Deskripsi</small>
+                            </div>
+                            <div class="card-body p-3 small text-secondary" id="lbl-description" style="line-height: 1.5;">
+                                Tidak ada deskripsi tambahan untuk dokumen ini.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="preview-container shadow-sm border">
+                            <div id="iframe-loader" class="position-absolute top-50 start-50 translate-middle text-center">
+                                <div class="spinner-border spinner-border-sm text-secondary" role="status"></div>
+                                <span class="d-block text-muted small mt-1">Menghubungkan ke server awan...</span>
+                            </div>
+                            <iframe id="preview-frame" class="preview-iframe" src=""></iframe>
+                        </div>
+                    </div>
+
+                </div> </div>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/js/view-document.js"></script>
+</body>
+</html>
