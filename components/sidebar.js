@@ -26,7 +26,7 @@ export function renderSidebar(elementId, activeMenu = 'dashboard') {
             </div>
             
             <div class="p-3 border-top text-center sb-text" style="border-color: var(--border-color) !important;">
-                <small class="text-muted" style="font-size: 11px; font-weight: 500;">DMS Engine &copy; 2026</small>
+                <small class="text-muted" style="font-size: 11px; font-weight: 500;">Bapemkesra &copy; 2026</small>
             </div>
         </div>
         
